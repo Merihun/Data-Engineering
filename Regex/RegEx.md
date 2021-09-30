@@ -67,3 +67,20 @@ You can use the expression [cmf]an to match only 'can', 'man' and 'fan' without 
 Answer: [^b]og
 The simplest solution to match any line that ends in 'og' but is not 'bog' would be the expression [^b]og. 
 
+### Character Ranges
+
+- When using the square bracket notation, there is a shorthand for matching a character in list of sequential characters by using the dash to indicate a character range. 
+- For example, the pattern [0-6] will only match any single digit character from zero to six, and nothing else. And likewise, [^n-p] will only match any single character except for letters n to p.
+- Multiple character ranges can also be used in the same set of brackets, along with individual characters. 
+- An example of this is the alphanumeric \w metacharacter which is equivalent to the character range <b>[A-Za-z0-9_]</b> and often used to match characters in English text.
+
+<b> Exercise 5: Matching using Character Ranges </b> <i> write a pattern that use the bracket notation to match or skip each character from each line in the strings below. </i>
+
+  Match : <b>Ana</b><br>
+  Match : <b>Bob</b><br>
+  Match : <b>Cpc</b><br>
+  skip  : <b>aax</b><br>
+  skip  : <b>bby</b><br>
+  skip  : <b>ccz</b><br>
+  
+  <b>Solution: </b> All the characters are sequential, so you can use the different ranges in the expression [A-C][n-p][a-c] to match only the first three lines.
