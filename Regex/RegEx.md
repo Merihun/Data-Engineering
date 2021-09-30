@@ -39,4 +39,4 @@
   text 3: <b>?=+.</b><br>
   text 4: <b>abc1</b><br>
  
- Answer: the patern is: <h3>...\.</h3>
+ Answer: the patern is: <b>...\.</b>
