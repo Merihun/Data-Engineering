@@ -90,7 +90,7 @@ The simplest solution to match any line that ends in 'og' but is not 'bog' would
   - One way that we can handle repetitions of characters is to explicitly spell out exactly how many characters we want
       * eg. \d\d\d which would match exactly three digits.
   - We can also specify how many repetitions of each character we want using the curly braces notation.
-  #### Example: 
+  <b>Example: </b>
   
       : <b>a{3}</b> will match the <b>a</b> character exactly three times.
       : <b>a{1,3}</b> will match the <b>a</b> character no more than 3 times, but no less than once.
@@ -140,5 +140,18 @@ Example:
  <b>Solution : </b> 
  - We can use the meta-character '\d' to match the number of files and use the expression <b> \d+ files? found\?</b> to match all the lines where files were found.
   * Note that the first question mark applies to the preceding 's' character (for plurality), and the actual question mark at the end must be escaped to match the text.
-  * 
+ 
+ ### Whitespace 
+ - The most common forms of whitespace you will use with regular expressions are the <b>space (␣), the tab (\t), the new line (\n) and the carriage return (\r) </b> and these special characters match each of their respective whitespaces.
+ - A whitespace special character<b> \s </b> will match any of the specific whitespaces above and is extremely useful when dealing with raw input text.
+
+<b> Exercise : Whitespace </b> Write a pattern that can match each line containing whitespace characters between the number and the content.In the strings below, you'll find that the content of each line is indented by some whitespace from the index of the line (the number is a part of the text to match). 
+
+  Match : <b>1.   abc</b><br>
+  Match : <b>2.	abc</b><br>
+  Match : <b>3.           abc</b><br>
+  skip  : <b>4.abc</b><br>
+  
+ <b>Solution : </b> We have to match only the lines that have a space between the list number and 'abc'. We can do that by using the expression <b> \d\.\s+abc</b> to match the number, the actual period (which must be escaped), one or more whitespace characters then the text.
+
 
