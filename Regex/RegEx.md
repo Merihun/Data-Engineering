@@ -1,4 +1,4 @@
 
 ## Introduction to Regular expressions
 
-<h1>Regular expressions</h1> are extremely useful in extracting information from text such as code, log files, spreadsheets, or even documents. 
+<p><h3>Regular expressions</h3> are extremely useful in extracting information from text such as code, log files, spreadsheets, or even documents. </p>
