@@ -147,9 +147,9 @@ Example:
 
 <b> Exercise : Whitespace </b> Write a pattern that can match each line containing whitespace characters between the number and the content.In the strings below, you'll find that the content of each line is indented by some whitespace from the index of the line (the number is a part of the text to match). 
 
-  Match : <b>1.   abc</b><br>
-  Match : <b>2.	abc</b><br>
-  Match : <b>3.           abc</b><br>
+  Match : <b>1.␣␣␣abc</b><br>
+  Match : <b>2.␣␣␣␣␣␣␣␣abc</b><br>
+  Match : <b>3.␣␣␣␣␣␣␣␣␣␣␣abc</b><br>
   skip  : <b>4.abc</b><br>
   
  <b>Solution : </b> We have to match only the lines that have a space between the list number and 'abc'. We can do that by using the expression <b> \d\.\s+abc</b> to match the number, the actual period (which must be escaped), one or more whitespace characters then the text.
