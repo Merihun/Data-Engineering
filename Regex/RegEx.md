@@ -138,6 +138,6 @@ Example:
   skip  : <b>No files found?</b><br>
  <b>Solution : </b> 
  - We can use the meta-character '\d' to match the number of files and use the expression <b> \d+ files? found\?</b> to match all the lines where files were found.
-**Note that the first question mark applies to the preceding 's' character (for plurality), and the actual question mark at the end must be escaped to match the text.
+  * Note that the first question mark applies to the preceding 's' character (for plurality), and the actual question mark at the end must be escaped to match the text.
   * 
 
