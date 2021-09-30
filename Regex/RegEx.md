@@ -34,9 +34,36 @@
 
 <b> Exercise 3: Matching Characters </b> <i> write a single pattern that can match the first three strings, but not the last (to be skipped) in the strings below. </i>
 
-  text 1: <b>cat.</b><br>
-  text 2: <b>896.</b><br>
-  text 3: <b>?=+.</b><br>
-  text 4: <b>abc1</b><br>
+  Match: <b>cat.</b><br>
+  Match: <b>896.</b><br>
+  Match: <b>?=+.</b><br>
+  Match: <b>abc1</b><br>
  
- Answer: the patern is: <b>...\\.</b>
+ Answer: the patern is: <b>...\\.</b> (the three dots, backslash and a dot)
+ 
+ - There is a method for matching specific characters using regular expressions, by defining them inside square brackets. 
+ - For example, the pattern [abc] will only match a single a, b, or c letter and nothing else.
+
+<b> Exercise 4: Matching specific Characters </b> <i> write a pattern that match the first three strings, but not the last three strings in the strings below. </i>
+
+  Match : <b>can</b><br>
+  Match : <b>man</b><br>
+  Match : <b>fan</b><br>
+  skip  : <b>dan</b><br>
+  skip  : <b>ran</b><br>
+  skip  : <b>pan</b><br>
+
+Answer: [cmf]an
+You can use the expression [cmf]an to match only 'can', 'man' and 'fan' without matching any other line.
+
+- In some cases, we might know that there are specific characters that we don't want to match too, for example, we might only want to match phone numbers that are not from the area code 650.
+- We can acomplish this by using the square brackets and the ^ (hat).
+- For example, the pattern [^abc] will match any single character except for the letters a, b, or c.
+<b> Exercise 4: Matching specific Characters </b> <i> write a pattern that matches only the live animals (hog, dog, but not bog) in the strings below. </i>
+  Match : <b>hog</b><br>
+  Match : <b>dog</b><br>
+  skip  : <b>bog</b><br>
+
+Answer: [^b]og
+The simplest solution to match any line that ends in 'og' but is not 'bog' would be the expression [^b]og. 
+
