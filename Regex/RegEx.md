@@ -92,11 +92,11 @@ The simplest solution to match any line that ends in 'og' but is not 'bog' would
   - We can also specify how many repetitions of each character we want using the curly braces notation.
   #### Example: 
   
-      :<b>a{3}</b> will match the <b>a</b> character exactly three times.
-      :<b>a{1,3}</b> will match the <b>a</b> character no more than 3 times, but no less than once.
-      :<b>w{3}</b> three w's
-      :<b>[wxy]{5}</b> five characters, each of which can be a w, x, or y
-      :<b>.{2,6}</b> between two and six of any character
+      : <b>a{3}</b> will match the <b>a</b> character exactly three times.
+      : <b>a{1,3}</b> will match the <b>a</b> character no more than 3 times, but no less than once.
+      : <b>w{3}</b> three w's
+      : <b>[wxy]{5}</b> five characters, each of which can be a w, x, or y
+      : <b>.{2,6}</b> between two and six of any character
       
  <b> Exercise : Matching using curly brace notation </b> Write a pattern that matches only the first two spellings by using the curly brace notation above.
  
