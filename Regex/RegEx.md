@@ -8,9 +8,9 @@
 
 <b> Exercise 1: Matching Characters</b> <i>writing a pattern that matches all three rows</i>
 
-  text 1: <b>abc</b>dedfg
-  text 2: <b>abc</b>de
-  text 3: <b>abc</b>
+  text 1: <b>abc</b>dedfg<br>
+  text 2: <b>abc</b>de<br>
+  text 3: <b>abc</b><br>
 
 
 
