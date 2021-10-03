@@ -42,4 +42,21 @@ The output contains the processes that are owned by you.<br>
 - It shows the summary information of the system and the list of processes or threads which are currently managed by the Kernel.
 - It gives information related to cpu and memory usage per process.
 <img width="983" alt="image" src="https://user-images.githubusercontent.com/26862785/135751978-3cdbf6e6-f1de-494a-9ef3-605bef7575b0.png">
+When started for the first time, you'll be presented with the following elements on the main top screen.
 
+Summary Area. - shows information like system uptime, number of users, load average, memory usage etc.
+Fields/Columns Header.
+Task Area.
+- The output keeps refreshing until you press <b> 'q' or Ctrl+c</b>
+- If you want to exit automatically after a specified number of repetitions, use the -n option as in the 
+    <b> top -n 10</b>:
+- using 'top' we can find out which process is consuming the most resources. You can press the following keys while 'top' is running to sort the list :
+  M - sort by memory usage 
+  P - sort by CPU usage 
+  N - sort by process ID 
+  T - sort by the running time
+
+### Display Messages
+## echo
+- echo command displays the given text on the screen. 
+   echo "Welcome to the linux lab"
