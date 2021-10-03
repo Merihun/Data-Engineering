@@ -58,5 +58,5 @@ Task Area.
 
 ### Display Messages
 ## echo
-- echo command displays the given text on the screen. 
+- echo command displays the given text on the screen. <br>
    echo "Welcome to the linux lab"
