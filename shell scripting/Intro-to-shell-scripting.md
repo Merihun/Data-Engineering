@@ -26,6 +26,19 @@ List the files and directories in the current directory.<br>
 ### Get basic information about the operating system
 
 ## uname
-By default the command prints the kernel name. You will see Linux printed in the output.
+By default the command prints the kernel name. You will see Linux printed in the output.<br>
   <b> uname - a</b> : Using the -a opton prints all the system information in the following order:<br> 
     Kernel name, network node hostname, kernel release date, kernel version, machine hardware name, hardware platform, operating system.
+#### Get information about active processes
+
+## ps
+<b> ps</b> lists the processes that are currently running and their PIDs (process ids).
+The output contains the processes that are owned by you.<br>
+  <b> ps -e </b> : The -e option displays all the processes running on the system. This includes processes owned by other users also.<br>
+
+### Get information on the running processes and system resources
+## top
+- <b>top</b> command provides a dynamic real-time view of the running system.
+- It shows the summary information of the system and the list of processes or threads which are currently managed by the Kernel.
+- It gives information related to cpu and memory usage per process.
+
