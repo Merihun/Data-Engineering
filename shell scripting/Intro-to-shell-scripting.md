@@ -41,4 +41,5 @@ The output contains the processes that are owned by you.<br>
 - <b>top</b> command provides a dynamic real-time view of the running system.
 - It shows the summary information of the system and the list of processes or threads which are currently managed by the Kernel.
 - It gives information related to cpu and memory usage per process.
+<img width="983" alt="image" src="https://user-images.githubusercontent.com/26862785/135751978-3cdbf6e6-f1de-494a-9ef3-605bef7575b0.png">
 
