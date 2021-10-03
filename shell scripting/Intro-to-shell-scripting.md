@@ -197,7 +197,6 @@ Here, owner has read and write permissions, group owner has read permission and 
 - <b>grep people usdoi.txt</b> prints all lines in the file usdoi.txt which contain the word people.
 
 Some of the frequently used options of grep are:
-
     -n	Along with the matching lines, print the line numbers also
     -c	Get the count of matching lines
     -i	Ignore the case of the text while matching
@@ -205,5 +204,40 @@ Some of the frequently used options of grep are:
     -w	Match only if the pattern matches whole words
     
 - <b>grep -v login /etc/passwd</b> Prints all lines from the /etc/passwd file, which do not contain the pattern login.
+
+### Networking commands
+## hostname
+- Show the system's host name
+- To view the current host name, run the command below .
+- <b>hostname -i</b> You can use the -i option to view the IP adrress of the host:
+
+
+### Test if a host is reachable
+## ping
+
+- ping www.google.com The command keeps sending data packets to the www.google.com server and prints the response it gets back. 
+- (Press Ctrl+C to stop pinging)
+- If you want to ping only for a limited number of times, use -c option. ping -c 5 www.google.com
+
+### Display network interface configuration
+
+## ifconfig
+
+- Configures or displays network interface parameters for a network.
+- Display the configuration of all network interfaces of the system:
+## ifconfig eth0
+
+- Display the configuration of the ethernet adapter.
+- eth0 is usually the primary network interface that connects your server to the network.
+- You can see your server's ip address in the line number 2 after the word inet.
+
+### Transfer data from or to a server
+
+## curl
+- Access the file at the given url and display the contents on to the screen.
+- curl https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
+- Access the file at the given url and save it in the current directory.
+
+curl -O https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Bash%20Scripting/usdoi.txt
 
 
