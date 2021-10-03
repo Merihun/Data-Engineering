@@ -20,4 +20,12 @@ Below are some of the popular format specifiers that you can try out.
   %H	Display the hour
 ## ls
 List the files and directories in the current directory.<br>
-  <b>ls /bin</b> : list all the files in the /bin directory. 
+  <b>ls /bin</b> : list all the files in the /bin directory.<br>
+  <b>ls /bin/b* </b> : List all files starting with b in the /bin directory.<br>
+  <b>ls /bin/*r </b> : List all files ending with r in the /bin directory.<br>
+### Get basic information about the operating system
+
+## uname
+By default the command prints the kernel name. You will see Linux printed in the output.
+  <b> uname - a</b> : Using the -a opton prints all the system information in the following order:<br> 
+    Kernel name, network node hostname, kernel release date, kernel version, machine hardware name, hardware platform, operating system.
