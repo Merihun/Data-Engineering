@@ -19,5 +19,5 @@ Below are some of the popular format specifiers that you can try out.
   %T	Display the time in 24 hour format as HH:MM:SS
   %H	Display the hour
 ## ls
-List the files and directories in the current directory.
+List the files and directories in the current directory.<br>
   <b>ls /bin</b> : list all the files in the /bin directory. 
