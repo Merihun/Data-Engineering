@@ -204,6 +204,38 @@ Some of the frequently used options of grep are:
     -w	Match only if the pattern matches whole words
     
 - <b>grep -v login /etc/passwd</b> Prints all lines from the /etc/passwd file, which do not contain the pattern login.
+- <b>grep "string" FILE_PATTERN</b> Checking for the given string in multiple files.
+- exmple if we have two files named demo_file and demo_file1, the command <b>grep "this" demo_* </b> will grab all lines with the word "this".
+- <b>grep -i "string" FILE</b> Case insensitive search using grep -i. Example <b>grep -i "the" demo_file</b>
+- Additional reference:15 Practical Grep Command Examples In Linux / UNIX https://www.thegeekstuff.com/2009/03/15-practical-unix-grep-command-examples/
+
+## sed
+- Syntax: <b>sed OPTIONS... [SCRIPT] [INPUTFILE...] </b>
+- SED command in UNIX is stands for stream editor and it can perform lot’s of function on file like, searching, find and replace, insertion or deletion.
+- Though most common use of SED command in UNIX is for substitution or for find and replace. 
+- By using SED you can edit files even without opening it, which is much quicker way to find and replace something in file, than first opening that file in VI Editor and then changing it.
+- SED command in unix supports regular expression which allows it perform complex pattern matching.
+Example:
+<b>$cat > geekfile.txt</b>
+unix is great os. unix is opensource. unix is free os.
+learn operating system.
+unix linux which one you choose.
+unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+
+<b>$sed 's/unix/linux/' geekfile.txt</b>
+output: 
+linux is great os. unix is opensource. unix is free os.
+learn operating system.
+linux linux which one you choose.
+linux is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+
+- <b>$sed 's/unix/linux/2' geekfile.txt</b> Replacing the nth occurrence of a pattern in a line
+output:
+unix is great os. linux is opensource. unix is free os.
+learn operating system.
+unix linux which one you choose.
+unix is easy to learn.linux is a multiuser os.Learn unix .unix is a powerful.
+Addition Reference on SED: https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
 
 ### Networking commands
 ## hostname
