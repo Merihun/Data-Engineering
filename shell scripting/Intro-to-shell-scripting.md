@@ -215,12 +215,13 @@ Some of the frequently used options of grep are:
 - Though most common use of SED command in UNIX is for substitution or for find and replace. 
 - By using SED you can edit files even without opening it, which is much quicker way to find and replace something in file, than first opening that file in VI Editor and then changing it.
 - SED command in unix supports regular expression which allows it perform complex pattern matching.
-Example:
-<b>$cat > geekfile.txt</b>
-unix is great os. unix is opensource. unix is free os.
+Example:(display the content of geekfile.txt file) <br>
+<b>$cat > geekfile.txt</b><br><br>
+
+<b>unix is great os. unix is opensource. unix is free os.
 learn operating system.
 unix linux which one you choose.
-unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.
+unix is easy to learn.unix is a multiuser os.Learn unix .unix is a powerful.</b>
 
 <b>$sed 's/unix/linux/' geekfile.txt</b>
 output: 
