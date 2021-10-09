@@ -1,3 +1,19 @@
+### Why do we need shell scripts
+
+There are many reasons to write shell scripts –
+
+- To avoid repetitive work and automation
+- System admins use shell scripting for routine backups
+- System monitoring
+- Adding new functionality to the shell etc.
+
+### Advantages of shell scripts
+
+- The command and syntax are exactly the same as those directly entered in command line, so programmer do not need to switch to entirely different syntax
+- Writing shell scripts are much quicker
+- Quick start
+- Interactive debugging etc.
+
 ### Below are some basic General purpose shell terminal commands
 
 ## whoami: 
