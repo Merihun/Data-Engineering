@@ -34,3 +34,5 @@
 - NiFi also provides support to secure protocols like SSL, HTTPS, SSH and other encryptions.
 - It also supports user and role management and also can be configured with LDAP for authorization.
 
+ https://localhost:8443/nifi
+ 
