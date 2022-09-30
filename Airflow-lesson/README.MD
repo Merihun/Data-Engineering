@@ -5,6 +5,11 @@
 - Airflow was started by Airbnb in 2014. In 2016 it became an Apache incubator and in 2019 it was adopted as an Apache software foundation project.
 - It is a platform written in Python to schedule and monitor workflows programmatically. 
 - It is designed to execute a series of tasks following specified dependencies on a specified schedule. 
+
+### What is a DAG?
+
+DAG stands for Directed Acyclic Graph. In simple terms, it is a graph with nodes, directed edges and no cycles. Basically, this:
+
 ### Workflows
 
 - Workflows are defined as code, allowing them to be easily maintained, versioned, and tested. 
