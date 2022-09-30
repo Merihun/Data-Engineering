@@ -6,15 +6,20 @@
 - It is a platform written in Python to schedule and monitor workflows programmatically. 
 - It is designed to execute a series of tasks following specified dependencies on a specified schedule. 
 
-### What is a DAG?
-
-DAG stands for Directed Acyclic Graph. In simple terms, it is a graph with nodes, directed edges and no cycles. Basically, this:
-
 ### Workflows
 
 - Workflows are defined as code, allowing them to be easily maintained, versioned, and tested. 
 - a workflow is defined as a DAG (Directed Acyclic Graph), which contains individual units of work called Tasks. Tasks have dependencies and branches. 
-https://www.indellient.com/wp-content/uploads/2021/11/202111_ApacheAirflow_01.jpg![image](https://user-images.githubusercontent.com/26862785/193139227-e5d42981-6494-4ced-9b4e-9160c17ec7cd.png)
+
+![Workflows](/images/github-logo.png)
+
+### What is a DAG?
+
+DAG stands for Directed Acyclic Graph. In simple terms, it is a graph with nodes, directed edges and no cycles. 
+
+### What is Airflow Operator?
+
+In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an operator. An Operator is a class encapsulating the logic of what you want to achieve. For example, you want to execute a python function, you will use the PythonOperator. You want to execute a Bash command, you will use the BashOperator. Airflow brings a ton of operators that you can find here and here. When an operator is triggered, it becomes a task, and more specifically, a task instance.
 
 
 #### Installation
