@@ -13,6 +13,7 @@
 
 ![Workflows](/images/202111_ApacheAirflow_01.jpg)
 
+
 ### What is a DAG?
 
 DAG stands for Directed Acyclic Graph. In simple terms, it is a graph with nodes, directed edges and no cycles. 
