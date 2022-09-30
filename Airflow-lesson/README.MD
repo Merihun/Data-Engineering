@@ -11,7 +11,7 @@
 - Workflows are defined as code, allowing them to be easily maintained, versioned, and tested. 
 - a workflow is defined as a DAG (Directed Acyclic Graph), which contains individual units of work called Tasks. Tasks have dependencies and branches. 
 
-![Workflows](Airflow-lesson/images/202111_ApacheAirflow_01.jpg?raw=true "Title")
+![Workflows](/Airflow-lesson/images/202111_ApacheAirflow_01.jpg?raw=true "Title")
 
 
 ### What is a DAG?
