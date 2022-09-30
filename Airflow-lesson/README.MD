@@ -22,7 +22,9 @@ DAG stands for Directed Acyclic Graph. In simple terms, it is a graph with nodes
 
 ### What is Airflow Operator?
 
-In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an operator. An Operator is a class encapsulating the logic of what you want to achieve. For example, you want to execute a python function, you will use the PythonOperator. You want to execute a Bash command, you will use the BashOperator. Airflow brings a ton of operators that you can find here and here. When an operator is triggered, it becomes a task, and more specifically, a task instance.
+In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an operator. An Operator is a class encapsulating the logic of what you want to achieve. For example, you want to execute a python function, you will use the PythonOperator. You want to execute a Bash command, you will use the BashOperator. Airflow brings a ton of operators that you can find here and here. When an operator is triggered, it becomes a task, and more specifically, a task instance. Below is example for Airflow Operator
+
+![Operator](/Airflow-lesson/images/airflow_dag.png?Screenshot 2022-09-30 at 9.40.05 AM.png?raw=true "Operator Example")
 
 
 #### Installation
