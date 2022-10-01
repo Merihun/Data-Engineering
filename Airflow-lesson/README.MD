@@ -53,7 +53,7 @@ In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an
 - If you want to execute a bash command, you have to import the BashOperator. 
 - Finally, the last import is usually the datetime class as you need to specify a start date to your DAG.
 
-```
+```python 3
 from airflow import DAG
 from airflow.operators.python import PythonOperator, BranchPythonOperator
 from airflow.operators.bash import BashOperator
@@ -83,7 +83,7 @@ catchup=False  # Catchup
 #### Step 3: Add tasks
 - Training model A, B and C, are implemented with the PythonOperator. 
 
-```
+```python 3
 from random import randint # Import to generate random numbers
 def _training_model():
 return randint(1, 10) # return an integer between 1 - 10
