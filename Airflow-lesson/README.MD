@@ -71,7 +71,7 @@ from datetime import datetime
 - The catchup argument allows you to prevent from backfilling automatically the non triggered DAG Runs between the start date of your DAG and the current date. 
 - If you want don’t want to end up with many DAG runs running at the same time, it’s usually a best practice to set it to False.
 - You can use the with statment. "with” is a context manager and allows you to better manager objects. In that case, a DAG object.
-```
+```python 3
 with DAG("my_dag", # Dag id
 start_date=datetime(2021, 1 ,1), # start date, the 1st of January 2021 
 schedule_interval='@daily',  # Cron expression, here it is a preset of Airflow, @daily means once every day.
