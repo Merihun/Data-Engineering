@@ -45,6 +45,6 @@ In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an
 ### Example 1: First Airflow DAG
 
 
-![Workflows](/Airflow-lesson/images/airflowdag.png?raw=true "FirstDAG")
+![AirflowDAG](/Airflow-lesson/images/AirflowDAG.png?raw=true "FirstDAG")
 
 
