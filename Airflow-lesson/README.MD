@@ -62,4 +62,6 @@ from datetime import datetime
 #### Step 2: Create the Airflow DAG object
 - A DAG object must have two parameters, a ``` dag_id ``` and a ``` start_date ```. 
 - The __dag_id__ is the unique identifier of the DAG across all of DAGs. Each DAG must have a unique dag_id. 
-- The __start_date__ defines the date at which your DAG starts being scheduled. Warning here,
+- The __start_date__ defines the date at which your DAG starts being scheduled.
+- If the start_date is set in the past, the scheduler will try to backfill all the non-triggered DAG Runs between the start_date and the current date. 
+- Other arguments are the __schedule_interval__ and the __catchup__ arguments.
