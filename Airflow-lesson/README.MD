@@ -21,6 +21,18 @@
 - A DAG is a data pipeline in Apache Airflow. 
 - So, whenever you read “DAG”, it means “data pipeline”. 
 - When a DAG is triggered, a DAGRun is created. A DAGRun is an instance of your DAG with an execution date in Airflow.
+### Dependencies?
+- DAG has directed edges. Those directed edges are the dependencies in an Airflow DAG between all of your operators/tasks. 
+- If you want to say “Task A is executed before Task B”, you have to defined the corresponding dependency.
+```
+task_a >> task_b
+# Or
+task_b << task_a
+```
+
+- The >> and << respectively mean “right bitshift” and “left bitshift” or “set downstream task” and “set upstream task”. 
+- In the example, on the first line we say that task_b is a downstream task to task_a. 
+- On the second line we say that task_a is an upstream task of task_b. Don’t worry, we will come back at dependencies.
 
 ![Workflows](/Airflow-lesson/images/airflow_dag.png?raw=true "DAG")
 
