@@ -47,4 +47,15 @@ In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an
 
 ![AirflowDAG](/Airflow-lesson/images/AirflowDAG.png?raw=true "FirstDAG")
 
+#### Step 1: Import DAG classes
 
+- If you want to execute a Python function, you have to import the PythonOperator. 
+- If you want to execute a bash command, you have to import the BashOperator. 
+- Finally, the last import is usually the datetime class as you need to specify a start date to your DAG.
+
+```
+from airflow import DAG
+from airflow.operators.python import PythonOperator, BranchPythonOperator
+from airflow.operators.bash import BashOperator
+from datetime import datetime
+```
