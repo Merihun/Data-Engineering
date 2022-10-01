@@ -86,7 +86,7 @@ catchup=False  # Catchup
 ```python 3
 from random import randint # Import to generate random numbers
 def _training_model():
-return randint(1, 10) # return an integer between 1 - 10
+  return randint(1, 10) # return an integer between 1 - 10
 with DAG(...) as dag:
 # Tasks are implemented under the dag object
 training_model_A = PythonOperator(
