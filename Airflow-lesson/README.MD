@@ -59,3 +59,7 @@ from airflow.operators.python import PythonOperator, BranchPythonOperator
 from airflow.operators.bash import BashOperator
 from datetime import datetime
 ```
+#### Step 2: Create the Airflow DAG object
+- A DAG object must have two parameters, a ``` dag_id ``` and a ``` start_date ```. 
+- The __dag_id__ is the unique identifier of the DAG across all of DAGs. Each DAG must have a unique dag_id. 
+- The __start_date__ defines the date at which your DAG starts being scheduled. Warning here,
