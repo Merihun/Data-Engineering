@@ -16,7 +16,11 @@
 
 ### What is a DAG?
 
-DAG stands for Directed Acyclic Graph. In simple terms, it is a graph with nodes, directed edges and no cycles. 
+- DAG stands for Directed Acyclic Graph. 
+- It is a graph with nodes, directed edges and no cycles. 
+- A DAG is a data pipeline in Apache Airflow. 
+- So, whenever you read “DAG”, it means “data pipeline”. 
+- When a DAG is triggered, a DAGRun is created. A DAGRun is an instance of your DAG with an execution date in Airflow.
 
 ![Workflows](/Airflow-lesson/images/airflow_dag.png?raw=true "DAG")
 
