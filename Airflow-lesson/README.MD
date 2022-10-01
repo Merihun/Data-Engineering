@@ -65,3 +65,16 @@ from datetime import datetime
 - The __start_date__ defines the date at which your DAG starts being scheduled.
 - If the start_date is set in the past, the scheduler will try to backfill all the non-triggered DAG Runs between the start_date and the current date. 
 - Other arguments are the __schedule_interval__ and the __catchup__ arguments.
+- The schedule_interval defines the interval of time at which your DAG gets triggered. 
+  e.g Every 10 mins, every day, every month and so on. 
+- 2 ways to define it, either with a CRON expression or with a timedelta object. The first option is the most often used.
+- The catchup argument allows you to prevent from backfilling automatically the non triggered DAG Runs between the start date of your DAG and the current date. 
+- If you want don’t want to end up with many DAG runs running at the same time, it’s usually a best practice to set it to False.
+```
+with DAG("my_dag", # Dag id
+start_date=datetime(2021, 1 ,1), # start date, the 1st of January 2021 
+schedule_interval='@daily',  # Cron expression, here it is a preset of Airflow, @daily means once every day.
+catchup=False  # Catchup 
+) as dag:
+
+```
