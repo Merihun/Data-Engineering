@@ -28,7 +28,7 @@
 
 In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an operator. An Operator is a class encapsulating the logic of what you want to achieve. For example, you want to execute a python function, you will use the PythonOperator. You want to execute a Bash command, you will use the BashOperator. Airflow brings a ton of operators that you can find here and here. When an operator is triggered, it becomes a task, and more specifically, a task instance. Below is example for Airflow Operator
 
-![Operator](/Airflow-lesson/images/airflow_dag.png?operators.png?raw=true "Operator Example")
+![Operator](/Airflow-lesson/images/operators.png?raw=true "Operator Example")
 
 
 #### Installation
