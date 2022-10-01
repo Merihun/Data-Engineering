@@ -70,11 +70,36 @@ from datetime import datetime
 - 2 ways to define it, either with a CRON expression or with a timedelta object. The first option is the most often used.
 - The catchup argument allows you to prevent from backfilling automatically the non triggered DAG Runs between the start date of your DAG and the current date. 
 - If you want don’t want to end up with many DAG runs running at the same time, it’s usually a best practice to set it to False.
+- You can use the with statment. "with” is a context manager and allows you to better manager objects. In that case, a DAG object.
 ```
 with DAG("my_dag", # Dag id
 start_date=datetime(2021, 1 ,1), # start date, the 1st of January 2021 
 schedule_interval='@daily',  # Cron expression, here it is a preset of Airflow, @daily means once every day.
 catchup=False  # Catchup 
 ) as dag:
+
+```
+
+#### Step 3: Add tasks
+- Training model A, B and C, are implemented with the PythonOperator. 
+
+```
+from random import randint # Import to generate random numbers
+def _training_model():
+return randint(1, 10) # return an integer between 1 - 10
+with DAG(...) as dag:
+# Tasks are implemented under the dag object
+training_model_A = PythonOperator(
+task_id="training_model_A",
+python_callable=_training_model
+)
+training_model_B = PythonOperator(
+task_id="training_model_B",
+python_callable=_training_model
+)
+training_model_C = PythonOperator(
+task_id="training_model_C",
+python_callable=_training_model
+)
 
 ```
