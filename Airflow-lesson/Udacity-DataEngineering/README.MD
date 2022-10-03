@@ -1,5 +1,7 @@
 ### Build the S3 to Redshift Dag
 
+#### Instractions
+Copy and populate the trips table. Then, add another operator which creates a traffic analysis table from the trips table you created. Note, in this class, we won’t be writing SQL -- all of the SQL statements we run against Redshift are predefined and included in your lesson. Remember to run "/opt/airflow/start.sh" command to start the web server. Once the Airflow web server is ready,  open the Airflow UI using the "Access Airflow" button.
 ```python 3
 import datetime
 import logging
