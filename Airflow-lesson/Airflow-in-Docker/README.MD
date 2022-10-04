@@ -52,7 +52,31 @@ $ mkdir -p ./dags ./logs ./plugins
 $ echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
 ```
 #### Step 4: Initialise the Airflow Database
-Initialise the Airflow Database by first starting the airflow-init container:
+- Initialise the Airflow Database by first starting the airflow-init container
+- This service will essentially run ```airflow db init``` and create the admin user for the Airflow Database.
+- By default, the account created has the login __airflow__ and the password __airflow__.
 ```bash
 $ docker-compose up airflow-init
 ```
+#### Step 5: Start Airflow services
+
+```bash
+$ docker-compose up
+```
+- The above command may take a while since multiple services need to be started.
+- Verify that these images are up and running using ``` $ docker ps ```
+
+#### Step 6: Access Airflow UI
+
+Open localhost:8080 on local browser. Both username and password are ``` airflow ```.
+
+#### Step 7: Enter the Airflow Worker container
+- You can even enter the worker container so that you can run airflow commands using ``` docker exec -it <container-id> bash ```  command. 
+- You can find <container-id> for the Airflow worker service by running ``` docker ps ```
+
+#### Step 8: Cleaning up the mess
+  ```
+  $ docker-compose down --volumes --rmi all
+  
+  ```
+  This command will stop and delete all running containers, delete volumes with database data and downloaded images.
