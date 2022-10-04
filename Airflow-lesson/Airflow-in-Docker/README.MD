@@ -133,3 +133,45 @@ curl -X GET  \
     --user "airflow:airflow" \
     "${ENDPOINT_URL}/api/v1/pools"
 ```
+#### Using custom images
+- The most common scenarios where you want to build your own image are adding a new apt package, adding a new PyPI dependency (either individually or via requirements.txt) and embedding DAGs into the image.
+- When you want to run Airflow locally, you might want to use an extended image, containing some additional dependencies - for example you might add new python packages, or upgrade airflow providers to a later version. 
+- This can be done very easily by specifying build: . in your docker-compose.yaml and placing a custom Dockerfile alongside your docker-compose.yaml. 
+- Then you can use docker-compose build command to build your image (you need to do it only once). 
+- You can also add the --build flag to your docker-compose commands to rebuild the images on-the-fly when you run other docker-compose commands.
+  
+Example 1: Dockerfile for adding new apt package:
+- The following example adds vim to the Airflow image. 
+- When adding packages via apt you should switch to the root user when running the apt commands, but do not forget to switch back to the airflow user after installation is complete.
+```
+  
+FROM apache/airflow:2.4.1
+USER root
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends \
+         vim \
+  && apt-get autoremove -yqq --purge \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+USER airflow
+  
+```
+Example 2: Dockerfile for adding new PyPI packages individually:  
+
+- The following example adds lxml python package from PyPI to the image. 
+- When adding packages via pip you need to use the airflow user rather than root. 
+- Attempts to install pip packages as root will fail with an appropriate error message.
+  
+```
+FROM apache/airflow:2.4.1
+RUN pip install --no-cache-dir lxml
+```
+Example 3: Dockerfile for adding packages from requirements.txt
+- The following example adds few python packages from requirements.txt from PyPI to the image.   
+- When adding packages via pip you need to use the airflow user rather than root. 
+- Attempts to install pip packages as root will fail with an appropriate error message.
+```
+  FROM apache/airflow:2.4.1
+COPY requirements.txt /
+RUN pip install --no-cache-dir -r /requirements.txt
+```
