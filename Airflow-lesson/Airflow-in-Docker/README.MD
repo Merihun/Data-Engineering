@@ -87,11 +87,11 @@ Open localhost:8080 on local browser. Both username and password are ``` airflow
  #### Step 9: Accessing the environment
   After starting Airflow, you can interact with it in 3 ways:
 
-* by running CLI commands.
-* via a browser using the web interface.
-* using the REST API.
+a. by running CLI commands.
+b. via a browser using the web interface.
+c. using the REST API.
 
-Running the CLI commands.
+a. Running the CLI commands.
 You can also run CLI commands, but you have to do it in one of the defined airflow-* services. For example, to run airflow info, run the following command:
 ```
 docker-compose run airflow-worker airflow info
@@ -119,3 +119,17 @@ Once the cluster has started up, you can log in to the web interface and begin e
 
 The webserver is available at: http://localhost:8080. The default account has the login airflow and the password airflow.
 
+  c. Sending requests to the REST API
+  
+Basic username password authentication is currently supported for the REST API, which means you can use common tools to send requests to the API.
+
+The webserver is available at: http://localhost:8080. The default account has the login airflow and the password airflow.
+
+Here is a sample curl command, which sends a request to retrieve a pool list:
+  
+```
+ENDPOINT_URL="http://localhost:8080/"
+curl -X GET  \
+    --user "airflow:airflow" \
+    "${ENDPOINT_URL}/api/v1/pools"
+```
