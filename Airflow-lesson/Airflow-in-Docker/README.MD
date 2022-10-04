@@ -1,6 +1,9 @@
 ### Running Airflow in Docker
 
-Quick-start guide that will allow you to quickly get Airflow up and running with __CeleryExecutor__ in Docker.
+- This Quick-start guide is a step-by-step guide that can help you get Apache Airflow v2.3.0 up and running on your local machine via Docker.
+- It will allow you to quickly get Airflow up and running with __CeleryExecutor__ in Docker.
+- Note that the Airflow Docker images should only be used for testing purposes. 
+- If you are planning to deploy Airflow on production environments I’d recommend running it on Kubernetes with the official helm chart.
 
 1. Install __Docker Community Edition (CE__ on your workstation.
 2. Install __Docker Compose__ v1.29.1 or newer on your workstation.
@@ -80,3 +83,25 @@ Open localhost:8080 on local browser. Both username and password are ``` airflow
   
   ```
   This command will stop and delete all running containers, delete volumes with database data and downloaded images.
+  
+ #### Step 9: Accessing the environment
+  After starting Airflow, you can interact with it in 3 ways:
+
+* by running CLI commands.
+* via a browser using the web interface.
+* using the REST API.
+
+Running the CLI commands.
+You can also run CLI commands, but you have to do it in one of the defined airflow-* services. For example, to run airflow info, run the following command:
+```
+docker-compose run airflow-worker airflow info
+```
+If you have Linux or Mac OS, you can make your work easier and download a optional wrapper scripts that will allow you to run commands with a simpler command.
+```
+curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.4.1/airflow.sh'
+chmod +x airflow.sh
+```
+Now you can run commands easier.
+```
+  ./airflow.sh info
+```
