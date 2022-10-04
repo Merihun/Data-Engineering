@@ -36,3 +36,23 @@ postgres - The database.
 redis - The redis - broker that forwards messages from scheduler to worker.
 ```
 #### Step 2: Create directories
+create three additional directories:
+* dags
+* logs
+* plugins
+
+```bash
+$ mkdir -p ./dags ./logs ./plugins
+```
+
+#### Step 3: Setting the Airflow user
+- Export an environment variable to ensure that the folder on your host machine and the folders within the containers share the same permissions. 
+- We will simply add these variables into a file called .env.
+```bash
+$ echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+```
+#### Step 4: Initialise the Airflow Database
+Initialise the Airflow Database by first starting the airflow-init container:
+```bash
+$ docker-compose up airflow-init
+```
