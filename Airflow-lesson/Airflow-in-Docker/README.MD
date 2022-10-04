@@ -12,9 +12,16 @@ You can check if you have enough memory by running this command:
 docker run --rm "debian:bullseye-slim" bash -c 'numfmt --to iec $(echo $(($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE))))'
 ```
 
-#### Fetching docker-compose.yaml
+#### Step 1: Fetching docker-compose.yaml
 
-To deploy Airflow on Docker Compose, you should fetch __docker-compose.yaml__.
+Create a new directory on your home directory (let’s call it airflow-local):
+```bash
+$ mkdir airflow-local
+$ cd airflow-local
+```
+
+Fetch docker-compose.yaml.
+
 ```bash
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.4.1/docker-compose.yaml'
 ```
@@ -28,3 +35,4 @@ airflow-init - The initialization service.
 postgres - The database.
 redis - The redis - broker that forwards messages from scheduler to worker.
 ```
+#### Step 2: Create directories
