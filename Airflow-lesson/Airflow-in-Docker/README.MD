@@ -105,3 +105,17 @@ Now you can run commands easier.
 ```
   ./airflow.sh info
 ```
+You can also use bash as parameter to enter interactive bash shell in the container or python to enter python container.
+```
+./airflow.sh bash
+```
+```
+./airflow.sh python
+  
+```
+ b. Accessing the web interface
+ 
+Once the cluster has started up, you can log in to the web interface and begin experimenting with DAGs.
+
+The webserver is available at: http://localhost:8080. The default account has the login airflow and the password airflow.
+
