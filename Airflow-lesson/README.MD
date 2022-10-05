@@ -6,6 +6,19 @@
 - It is a platform written in Python to schedule and monitor workflows programmatically. 
 - It is designed to execute a series of tasks following specified dependencies on a specified schedule. 
 
+### Installation and How to use Airflow
+
+To use Airflow we run a web server and then access the UI through the browser. You can schedule jobs to run automatically, so besides the server you'll also need to run the scheduler. In a production setting we usually run it on a dedicated server, but here we'll run it locally to understand how it works. You'll create a virtual environment and run these commands to do install everything:
+```bash
+$ python3 -m venv .env
+$ source .env/bin/activate
+$ pip3 install apache-airflow
+$ pip3 install cattrs==1.0.0. #I had to run this to work
+$ airflow version # check if everything is ok
+$ airflow initdb #start the database Airflow uses
+$ airflow scheduler #start the scheduler
+```
+
 ### Workflows
 
 - Workflows are defined as code, allowing them to be easily maintained, versioned, and tested. 
