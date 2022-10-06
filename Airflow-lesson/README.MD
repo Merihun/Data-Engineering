@@ -75,7 +75,7 @@ In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an
 
 ### Declaring a DAG
 
-** There are three ways to declare a DAG 
+**There are three ways to declare a DAG 
 1) Context manager, which will add the DAG to anything inside it implicitly 
 2) Standard constructor, passing the dag into any operators you use
 3) use the ```python @dag ``` decorator to turn a function into a DAG generator
