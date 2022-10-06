@@ -1,4 +1,5 @@
 # Apache AirFlow
+Imagine the scenario where you have to run multiple daily jobs to extract data from a data lake, preprocess them, and store the cleaned datasets to a dedicated database. It would be extremely tedious if we have to run the pipeline everyday, constantly checking for possible errors. This is where Airflow comes in handy: it provides you with all the tools to build and monitor multiple data pipelines, automatically.
 
 - Airflow is a platform created by the community to programmatically author, schedule and monitor workflows.
 - AirFlow is a Workflow Scheduling and Monitoring Platform
@@ -8,7 +9,10 @@
 
 ### Installation and How to use Airflow
 
-To use Airflow we run a web server and then access the UI through the browser. You can schedule jobs to run automatically, so besides the server you'll also need to run the scheduler. In a production setting we usually run it on a dedicated server, but here we'll run it locally to understand how it works. You'll create a virtual environment and run these commands to do install everything:
+To use Airflow we run a web server and then access the UI through the browser. You can schedule jobs to run automatically, so besides the server you'll also need to run the scheduler. In a production setting we usually run it on a dedicated server, but here we'll run it locally to understand how it works. 
+By default, your entire airflow directory is located at ~/airflow . But if you choose to change the default directory, simply runs this command:
+export AIRFLOW_HOME="<YOUR_AIRFLOW_DIRECTORY>"
+You'll create a virtual environment and run these commands to do install everything:
 ```bash
 Create an environment for Airflow (Optional but recommended)
 $ python3 -m venv .env
@@ -44,13 +48,23 @@ Note: If port 8080 occupied by other process and you want to free it to Airflow:
 
 1) Find out the process ID (PID) which is occupying the port number (e.g., 8080) you would like to free
 ```bash
-sudo lsof -i :5955
+sudo lsof -i :8080
 ```
 2) Kill the process which is currently using the port using its PID
 
 ```bash
 sudo kill -9 PID
 ```
+Before proceeding, we are required to create a username and password by running the following command (remember to change the firstname, lastname, and email fields to yours):
+```bash
+airflow users create \
+    --username admin \
+    --firstname <YOUR_FIRST_NAME> \
+    --lastname <YOUR_LAST_NAME> \
+    --role Admin \
+    --email <YOUR_EMAIL>@<YOUR_EMAIL_HOST>
+```
+
 #### Deployment Using Docker
 - We can use Docker to deploy all of the components in Airflow architecture to a server effortlessly.
 - Make sure Docker is installed. If it is not, you will have to install Docker and docker-compose for this to work. 
