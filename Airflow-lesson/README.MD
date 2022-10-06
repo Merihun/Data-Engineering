@@ -40,6 +40,18 @@ airflow standalone
 # Enable the example_bash_operator dag in the home page
 ```
 
+Note: If port 8080 occupied by other process and you want to free it to Airflow:
+
+1) Find out the process ID (PID) which is occupying the port number (e.g., 8080) you would like to free
+```bash
+sudo lsof -i :5955
+```
+2) Kill the process which is currently using the port using its PID
+
+```bash
+sudo kill -9 PID
+```
+
 ### Workflows
 
 - Workflows are defined as code, allowing them to be easily maintained, versioned, and tested. 
