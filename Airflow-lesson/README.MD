@@ -10,11 +10,15 @@
 
 To use Airflow we run a web server and then access the UI through the browser. You can schedule jobs to run automatically, so besides the server you'll also need to run the scheduler. In a production setting we usually run it on a dedicated server, but here we'll run it locally to understand how it works. You'll create a virtual environment and run these commands to do install everything:
 ```bash
+Create an environment for Airflow (Optional but recommended)
 $ python3 -m venv .env
 $ source .env/bin/activate
+# Create a folder and set it as Airflow home
 # Airflow needs a home. `~/airflow` is the default, but you can put it
 # somewhere else if you prefer (optional)
-export AIRFLOW_HOME=~/airflow
+mkdir -p ~/airflow/dags
+export AIRFLOW_HOME='~/airflow'
+export PATH=$PATH:~/.local/bin
 
 # Install Airflow using the constraints file
 AIRFLOW_VERSION=2.4.1
@@ -24,6 +28,9 @@ CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${A
 # For example: https://raw.githubusercontent.com/apache/airflow/constraints-2.4.1/constraints-3.7.txt
 pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
 
+# Init airflow. After init, you can adjust airflow settings in airflow.cfg
+cd ~/airflow
+airflow initdb
 # The Standalone command will initialise the database, make a user,
 # and start all components for you.
 airflow standalone
