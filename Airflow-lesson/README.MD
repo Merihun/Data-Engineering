@@ -78,9 +78,9 @@ In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an
 **There are three ways to declare a DAG 
 1) Context manager, which will add the DAG to anything inside it implicitly 
 2) Standard constructor, passing the dag into any operators you use
-3) use the ```python @dag ``` decorator to turn a function into a DAG generator
+3) use the ``` @dag ``` decorator to turn a function into a DAG generator
 
-#### Context manager
+#### Using Context manager
 ```python
 with DAG(
     "my_dag_name", start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
@@ -88,6 +88,22 @@ with DAG(
 ) as dag:
     op = EmptyOperator(task_id="task")
 ```
+#### Using Standard Constractor
+```python
+my_dag = DAG("my_dag_name", start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
+             schedule="@daily", catchup=False)
+op = EmptyOperator(task_id="task", dag=my_dag)
+```
+#### Using the @dag decorator
+```
+@dag(start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
+     schedule="@daily", catchup=False)
+def generate_dag():
+    op = EmptyOperator(task_id="task")
+
+dag = generate_dag()
+```
+- DAGs are nothing without Tasks to run, and those will usually either come in the form of either Operators, Sensors or TaskFlow.
 
 
 ### Example 1: First Airflow DAG
