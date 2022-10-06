@@ -36,7 +36,8 @@ airflow standalone
 ### Workflows
 
 - Workflows are defined as code, allowing them to be easily maintained, versioned, and tested. 
-- a workflow is defined as a DAG (Directed Acyclic Graph), which contains individual units of work called Tasks. Tasks have dependencies and branches. 
+- a workflow is defined as a DAG (Directed Acyclic Graph), which contains individual units of work called Tasks. 
+- Tasks have dependencies and branches. 
 
 ![Workflows](/Airflow-lesson/images/202111_ApacheAirflow_01.jpg?raw=true "Workflows")
 
@@ -51,6 +52,9 @@ airflow standalone
 ### Dependencies?
 - DAG has directed edges. Those directed edges are the dependencies in an Airflow DAG between all of your operators/tasks. 
 - If you want to say “Task A is executed before Task B”, you have to defined the corresponding dependency.
+- The DAG itself doesn’t care about what is happening inside the tasks; it is merely concerned with how to execute them - the order to run them in, how many times to retry them, if they have timeouts, and so on.
+
+
 ```
 task_a >> task_b
 # Or
@@ -68,6 +72,23 @@ task_b << task_a
 In an Airflow DAG, nodes are operators. In other words, a task in your DAG is an operator. An Operator is a class encapsulating the logic of what you want to achieve. For example, you want to execute a python function, you will use the PythonOperator. You want to execute a Bash command, you will use the BashOperator. Airflow brings a ton of operators that you can find here and here. When an operator is triggered, it becomes a task, and more specifically, a task instance. Below is example for Airflow Operator
 
 ![Operator](/Airflow-lesson/images/operators.png?raw=true "Operator Example")
+
+### Declaring a DAG
+
+** There are three ways to declare a DAG 
+1) Context manager, which will add the DAG to anything inside it implicitly 
+2) Standard constructor, passing the dag into any operators you use
+3) use the ```python @dag ``` decorator to turn a function into a DAG generator
+
+#### Context manager
+```python
+with DAG(
+    "my_dag_name", start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
+    schedule="@daily", catchup=False
+) as dag:
+    op = EmptyOperator(task_id="task")
+```
+
 
 ### Example 1: First Airflow DAG
 
