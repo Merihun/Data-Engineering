@@ -51,6 +51,55 @@ sudo lsof -i :5955
 ```bash
 sudo kill -9 PID
 ```
+#### Deployment Using Docker
+- We can use Docker to deploy all of the components in Airflow architecture to a server effortlessly.
+- Make sure Docker is installed. If it is not, you will have to install Docker and docker-compose for this to work. 
+- This guide is using __docker-airflow managed by puckel__.
+- Fork the below repo to your GitHub account and clone the forked repo to your machine.
+```url
+# Replace the URL with your forked repo
+git clone https://github.com/puckel/docker-airflow
+```
+# Uncomment these lines to persist data on the local filesystem.                
+  - PGDATA=/var/lib/postgresql/data/pgdata        
+volumes:
+  - ./pgdata:/var/lib/postgresql/data/pgdata
+```
+- Add the following codes to environment variables of webserver, worker, and scheduler to enable basic login. 
+
+```bash
+- AIRFLOW__WEBSERVER__AUTHENTICATE=True
+- AIRFLOW__WEBSERVER__AUTH_BACKEND=airflow.contrib.auth.backends.password_auth
+```
+
+- Note that you have to create an admin user using the following python script or using Airflow CLI.
+```python
+
+from __future__ import print_function
+
+import sys
+from airflow import models, settings
+from airflow.contrib.auth.backends.password_auth import PasswordUser
+
+user = PasswordUser(models.User())
+user.username = sys.argv[1]
+user.email = sys.argv[2]
+user.password = sys.argv[3]
+session = settings.Session()
+session.add(user)
+try:
+    session.commit()
+except:
+    print("User already exists.")
+session.close()
+exit()
+```
+
+#### Config Airflow:
+-  In the repo, you will find a file named docker-compose-CeleryExecutor.yml.
+-  This is the file that docker-compose config file for your Airflow deployment.
+-  Uncomment the three lines like shown below, to persist the metadata database file to your system file
+```text
 
 ### Workflows
 
