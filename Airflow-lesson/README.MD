@@ -64,6 +64,7 @@ airflow users create \
     --role Admin \
     --email <YOUR_EMAIL>@<YOUR_EMAIL_HOST>
 ```
+*** To find your DAG object list you can run __airflow dags list__ and confirm that your DAG shows up in the list.
 
 #### Deployment Using Docker
 - We can use Docker to deploy all of the components in Airflow architecture to a server effortlessly.
