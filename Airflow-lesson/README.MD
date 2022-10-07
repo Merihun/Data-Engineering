@@ -34,7 +34,7 @@ pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}
 
 # Init airflow. After init, you can adjust airflow settings in airflow.cfg
 cd ~/airflow
-airflow initdb
+airflow db init
 # The Standalone command will initialise the database, make a user,
 # and start all components for you.
 airflow standalone
