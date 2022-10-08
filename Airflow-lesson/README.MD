@@ -32,6 +32,7 @@ CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${A
 # For example: https://raw.githubusercontent.com/apache/airflow/constraints-2.4.1/constraints-3.7.txt
 pip install "apache-airflow==${AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
 
+Next set up the Airflow database and user.
 # Init airflow. After init, you can adjust airflow settings in airflow.cfg
 cd ~/airflow
 airflow db init
@@ -64,8 +65,37 @@ airflow users create \
     --role Admin \
     --email <YOUR_EMAIL>@<YOUR_EMAIL_HOST>
 ```
+
+Apache Airflow consists of two core parts - Webserver and Scheduler. You'll have to run both to inspect and run your DAGs.
+First, start the Webserver in the daemon mode (as a background process):
+```
+airflow webserver -D
+```
+Once it's running, use a similar command to run the Scheduler:
+```
+airflow scheduler -D
+```
 *** To find your DAG object list you can run __airflow dags list__ and confirm that your DAG shows up in the list.
 
+#### How to Remove Airflow Example DAGs
+
+You could delete the DAGs one by one, but there's a better approach. Open the ``` ~/airflow/airflow.cfg ``` file and change the load_examples value to False:
+
+Save the file and reopen the terminal. You'll have to reset the Airflow database:
+```bash
+airflow db reset
+```
+Once done, start  the Airflow webserver and scheduler once again:
+```bash
+airflow webserver -D
+airflow scheduler -D
+```
+#### What's Inside the Airflow SQLite Database?
+Our Airflow instance is using SQLite for the database. It's not recommended for production environments, but will serve us fine for local development. Establish a connection to ~/airflow/airflow.db through some DBMS (I'm using TablePlus) and run the following SQL query:
+```
+SELECT * FROM sqlite_master
+WHERE type = 'table';
+```
 #### Deployment Using Docker
 - We can use Docker to deploy all of the components in Airflow architecture to a server effortlessly.
 - Make sure Docker is installed. If it is not, you will have to install Docker and docker-compose for this to work. 
