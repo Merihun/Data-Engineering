@@ -74,3 +74,23 @@ $ vagrant init my-company-box https://example.com/my-company.box
 Create a Vagrantfile, locking the box to a version constraint:
 $ vagrant init --box-version '> 0.1.5' hashicorp/bionic64
 ```
+Have a look at Vagrantfile content
+```bash
+$ grep -v '^ *#' Vagrantfile
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/bionic64"
+
+end
+```
+
+__Step 3__ -> Bring up the virtual machine by using ``` vagrant up```
+
+- This command creates and configures guest machines according to your Vagrantfile.
+
+
+__Step 4__ -> Log in to the guest Ubuntu VM
+- In order to login to Ubuntu Guest VM run the ```vagrant ssh``` command.
+- That's all. Now Ubuntu Server installed using Vagrant and running through VirtualBox on your computer.
+- To exit from the Ubuntu console type ```exit``` to exit out of the server, and then you can run ```vagrant halt``` to shut it down.
