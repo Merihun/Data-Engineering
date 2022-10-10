@@ -182,7 +182,6 @@ bootstrap.sh*  shared_resources/  Vagrantfile
 It's time to provision the guest virtual machines.
 
 ```bash
-Jinendra@DESKTOP-IEH4IQ8 MINGW64 ~/LCO_linux_install_demo
 $ vagrant.exe up
 Bringing machine 'lco-linux-test-master' up with 'virtualbox' provider...
 Bringing machine 'lco-linux-test-worker1' up with 'virtualbox' provider...
@@ -190,4 +189,22 @@ Bringing machine 'lco-linux-test-worker2' up with 'virtualbox' provider...
 
 ...
 ...
+```
+This may take a few minutes to complete but it should finish without any errors.
+
+All our machines are up and running. Verify their status.
+```bash
+$ vagrant status
+
+```
+
+To destroy the test environment you created run the following command -
+```bash
+$ vagrant destroy
+    lco-linux-test-worker2: Are you sure you want to destroy the 'lco-linux-test-worker2' VM? [y/N] y
+==> lco-linux-test-worker2: Destroying VM and associated drives...
+    lco-linux-test-worker1: Are you sure you want to destroy the 'lco-linux-test-worker1' VM? [y/N] y
+==> lco-linux-test-worker1: Destroying VM and associated drives...
+    lco-linux-test-master: Are you sure you want to destroy the 'lco-linux-test-master' VM? [y/N] y
+==> lco-linux-test-master: Destroying VM and associated drives...
 ```
