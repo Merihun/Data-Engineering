@@ -37,3 +37,14 @@ You can view the list of all vagrant boxes using following command ->
 $ vagrant box list | grep bionic64
 ubuntu/bionic64     (virtualbox, 20210315.1.0)
 ```
+#### Initialize the Vagrant environment 
+
+- The following command will initialize the Vagrant environment in current working directory.
+```bash
+$ vagrant init ubuntu/bionic64 --force
+
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+```
