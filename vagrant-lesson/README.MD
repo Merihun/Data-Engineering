@@ -1,5 +1,119 @@
+### Vagrant
+
+* Vagrant is a popular tool used by development teams to quickly install and deploy one or several clusters of virtualized server environments on which to test and develop software and distributed systems.
+
+* In the era of micro services, it is extremely important to be able to quickly setup and tear down a test environment that would closely mimic it’s cloud environment once a system is deployed in production.
+* In this demo we will install and configure mysql server and ubuntu, and the steps on how to get it up and running quickly.
+
+In this demo we will be doing: 
+- virtualizing and automating the download, 
+- setup of ubuntu where mysql server will be running 
+- installation of the necessary dependencies, configurations required for mysql server to operate properly.
+
+- Ubuntu is a linux based operating system and is one of the most popular among the open source operating systems.
+- For vagrant to work, we also need a virtualization provider, for this we are going to use Oracle’s VirtualBox.
+- We also need a GUI Admin interface to manage and configure mysql databases and its users. For this we are going to use the web based phpmyadmin, as well as the corresponding web tools apache2, and php7.
+
+#### Install vagrant (on ubuntu linux)
+
+```bash
+sudo apt-get install virtualbox
+sudo apt-get install vagrant
+```
+#### Configure Vagrantfile
+
+Open Vagrantfile using your favorite editor. The initial content of the file will look like,
+
+```bash
+Vagrant.configure("2") do |config|
+  config.vm.box = "base"
+end
+```
+config.vm.box specifies the type of operating system that will be used as guest operating system running in virtualbox.
+Now change “base” to “xenial64”, this will install ubuntu16.04 the 64bit version. The OS will be downloaded from Vagrant’s cloud OS box site. Also add line of codes indicated below.
+```bash
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.define "db-server" do |db|
+    db.vm.network "public_network", :bridge => "eth0", ip: "192.168.1.237"
+    db.vm.network "forwarded_port", guest: 3306, host: 3306
+    db.vm.network "forwarded_port", guest: 80, host: 8306
+    db.vm.provision "shell", path: "bootstrap.sh"
+  end
+end
+```
+What each line is about,
+
+config.vm.define, allows us to define a named virtual environment. We can define several virtual environments in a single Vagrantfile, as long as we provide a unique name for each. In this particular example, we named our environment to “db-server”.
+
+db.vm.network “public_network”, defines the network interface to use. In this case we are using the host’s dhcp provider (as specified by “public_network”) to assign the ip via a bridge, using the shown IP. Note: the IP value may be changed to suit your network environment. Also make sure the IP is configured in the local network provider/router to lease the IP semi-permanently to this virtual machine as this may change on your next restart of the guest machine, and may have to be reconfigured to a new one.
+
+db.vm.network “forwarded_port”, this will allow us to open a listening port in the host and guest OS. The host OS has the actual connection to the outside world, so it forwards all received packets to the port we specify for the guest OS.
+
+For mysql, we can set 3306 for the guest and host OS.
+For the web application phpmyadmin, guest is set to 80, for the host we set to 8306. NOTE: vagrant will complain about port 80 being a well known port and can not be used. Choose any number higher than 1024 and you should be ok.
+
+db.vm.provision “shell”, this allows us to execute a shell script inside the guest OS right after it boots up.
+bootstrap.sh, This is where we add additional commands to install and configure the guest OS to run mysql server and phpmyadmin. bootstrap.sh may be renamed to anything you fancy.
+
+#### Bootstrap.sh
+```bash
+#!/usr/bin/env bash 
 
 
+DBHOST=localhost 
+DBNAME=dbname 
+DBUSER=dbuser 
+DBPASSWD=userpass 
+
+apt-get update 
+apt-get install vim curl build-essential python-software-properties git 
+
+debconf-set-selections <<< "mysql-server mysql-server/root_password password $DBPASSWD" 
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $DBPASSWD" 
+debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true" 
+debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $DBPASSWD"
+debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $DBPASSWD"
+debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password  $DBPASSWD" 
+debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect  none" 
+
+
+
+
+# install mysql and admin interface 
+
+apt-get -y install mysql-server phpmyadmin 
+
+
+mysql -uroot -p$DBPASSWD -e "CREATE DATABASE $DBNAME" 
+mysql -uroot -p$DBPASSWD -e "grant all privileges on $DBNAME.* to '$DBUSER'@'%' identified by $DBPASSWD" 
+
+cd /vagrant 
+
+# update mysql conf file to allow remote access to the db 
+
+sudo sed -i "s/.*bind-address.*/bind-address = 0.0.0.0/" 
+/etc/mysql/mysql.conf.d/mysqld.cnf 
+
+sudo service mysql restart 
+
+# setup phpmyadmin 
+
+apt-get -y install php apache2 libapache2-mod-php php-curl php-gd php-mysql php-gettext a2enmod rewrite 
+
+sed -i "s/AllowOverride None/AllowOverride All/g" 
+/etc/apache2/apache2.conf 
+
+rm -rf /var/www/html 
+ln -fs /vagrant/public /var/www/html 
+
+sed -i "s/error_reporting = .*/error_reporting = E_ALL/" 
+/etc/php/7.0/apache2/php.ini 
+sed -i "s/display_errors = .*/display_ errors = On/" 
+/etc/php/7.0/apache2/php.ini 
+
+service apache2 restart 
+```
 #### Installing Ubuntu VM on VirtualBox using Vagrant CLI
 
 - In order to install Ubuntu or any other OS VM for that reason we need an installation image from somewhere.
