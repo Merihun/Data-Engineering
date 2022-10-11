@@ -143,6 +143,7 @@ Connect to mysql server in the host terminal, or any system in the same network.
 ```bash
 mysql -u dbuser -p userpass -h 192.168.1.237
 ```
+credit: https://www.yourtechy.com/technology/mysql-server-vagrant-virtualbox/
 
 #### Installing Ubuntu VM on VirtualBox using Vagrant CLI
 
