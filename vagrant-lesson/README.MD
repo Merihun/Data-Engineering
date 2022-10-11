@@ -114,6 +114,36 @@ sed -i "s/display_errors = .*/display_ errors = On/"
 
 service apache2 restart 
 ```
+Boot up db-server
+
+In step 2, We named the virtual machine “db-server”, we use this name to refer to the guest server when sending commands to it.
+
+To start db-server
+```bash
+mysql-env$> vagrant up db-server
+```
+To check status
+```bash
+vagrant status
+```
+To ssh to guest
+```bash
+vagrant ssh db-server
+```
+
+The last command should now bring you inside the db-server. Type cd /vagrant, this will bring you to the base path of the guest machine, which is the same path as your host machine, in mysql-env.
+
+#### Test connections
+
+Load mysqladmin. Use any browser in the host, or any system in the same network. Login with the username and password you assigned in bootstrap.sh
+
+On your browser, go to: http://192.168.1.237:8306/phpmyadmin
+
+Connect to mysql server in the host terminal, or any system in the same network. Login with the username and password you assigned in bootstrap.sh
+```bash
+mysql -u dbuser -p userpass -h 192.168.1.237
+```
+
 #### Installing Ubuntu VM on VirtualBox using Vagrant CLI
 
 - In order to install Ubuntu or any other OS VM for that reason we need an installation image from somewhere.
