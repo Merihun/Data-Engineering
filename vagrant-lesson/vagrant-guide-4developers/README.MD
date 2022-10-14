@@ -82,6 +82,12 @@ The install.sh script will:
 - Install and activate Poetry
 - Terminal formatting
 
-
+  * Add the function defined in the “auto_activate_.venv.txt” file to the .bashrc file to auto-activate the venv at the project’s root
+  * Source the .bash_prompt file at the bottom of the .bashrc file and symbolically link the .bash_prompt file from the repo to the relevant location in the VM. This will convert the terminal prompt to display in the “{username} {folder name} * {git branch} >>” format
+  * Add a condition to cd to the /vagrant folder (the folder that syncs with your local files) when ssh-ing into the VM
+- Create the project’s venv using Poetry
+  * The poetry env use tells poetry to use the specific Python version we installed
+  * poetry install installs the dependencies specified in the lock file
 
 NOTE: This article is adopted and narreted from:  https://towardsdatascience.com/fall-in-love-with-your-environment-setup-vagrant-edition-40ee9313291b
+NOTE: This article references the vagrant-python-setup repo: https://github.com/jillvillany/vagrant-python-setup
