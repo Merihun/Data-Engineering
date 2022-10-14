@@ -28,7 +28,7 @@ Line 6 runs the ```install.sh``` script to provision the VM.
 
 #### install.sh script
 
-```bash {.line-numbers}
+```javascript {.line-numbers}
 
 #!/usr/bin/env bash
 
