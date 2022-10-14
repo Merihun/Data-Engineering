@@ -18,7 +18,17 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+![carbon](https://user-images.githubusercontent.com/26862785/195938278-c1cba7a3-3118-44b1-8c95-2b16638ad102.png)
 
+
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+  config.vm.box = "hashicorp/bionic64"
+    config.vm.network "forwarded_port", guest: 80, host: 8000
+  config.vm.provision :shell, path: "install.sh", privileged: false
+
+end
 
 
 
