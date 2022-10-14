@@ -8,7 +8,7 @@
 
 #### Vagrantfile
 
-```bash=
+```{.bash .numberLines .lineAnchors}
 1 # -*- mode: ruby -*-
 2 # vi: set ft=ruby :
 3 Vagrant.configure("2") do |config|
