@@ -8,7 +8,7 @@
 
 #### Vagrantfile
 
-```{.bash .numberLines .lineAnchors}
+```class:"lineNo"
 1 # -*- mode: ruby -*-
 2 # vi: set ft=ruby :
 3 Vagrant.configure("2") do |config|
@@ -28,7 +28,7 @@ Line 6 runs the ```install.sh``` script to provision the VM.
 
 #### install.sh script
 
-```bash
+```class:"lineNo"
 
 #!/usr/bin/env bash
 
