@@ -28,7 +28,7 @@ Line 6 runs the ```install.sh``` script to provision the VM.
 
 #### install.sh script
 
-```javascript {.line-numbers}
+```bash {.line-numbers}
 
 #!/usr/bin/env bash
 
@@ -76,7 +76,11 @@ echo "cd /vagrant" >> ~/.bashrc
 poetry env use python3.8
 poetry install
 ```
-
+The install.sh script will:
+- Install linux packages needed for Python install
+- Install specified Python version
+- Install and activate Poetry
+- Terminal formatting
 
 
 
