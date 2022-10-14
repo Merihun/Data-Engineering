@@ -21,6 +21,7 @@
 Line 4: VirtualBox base image to use - “hashicorp/bionic64”.
 Line 5: forwards port 80 on the VM to local port 8000.
 Line 6 runs the ```install.sh``` script to provision the VM. 
+
 - privileged is set to ```false``` so that the script is not run as the root user. 
 - If the install script is run as the root user, things installed like poetry will not be accessible to the vagrant user.
 - You can still specify sudo in front of specific commands in the install script that require root level access.
