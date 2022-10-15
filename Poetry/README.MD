@@ -15,3 +15,6 @@ Advantages of Poetry
 - Easy to add a new dependency to a project.
 - Easy to access and understandable project metadata from pyproject.toml
 
+
+
+Reference: https://www.geeksforgeeks.org/using-poetry-dependency-management-tool-in-python/
