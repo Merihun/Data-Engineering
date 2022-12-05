@@ -18,14 +18,16 @@ Create an environment for Airflow (Optional but recommended)
 $ python3 -m venv .env
 $ source .env/bin/activate
 # Create a folder and set it as Airflow home
-# Airflow needs a home. `~/airflow` is the default, but you can put it
-# somewhere else if you prefer (optional)
+# Airflow needs a home. `~/airflow` is the default, but you can put it somewhere else if you prefer (optional)
 mkdir -p ~/airflow/dags
+# Note: mkdir -p command can create sub-directories of a directory. It will create parent directory first, 
+# if it doesn't exist. But if it already exists, then it will not print an error message and will move further to create sub-directories.
+
 export AIRFLOW_HOME='~/airflow'
 export PATH=$PATH:~/.local/bin
 
 # Install Airflow using the constraints file
-AIRFLOW_VERSION=2.4.1
+AIRFLOW_VERSION=2.5.0
 PYTHON_VERSION="$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)"
 # For example: 3.7
 CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
