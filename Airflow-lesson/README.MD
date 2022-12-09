@@ -38,7 +38,6 @@ Next set up the Airflow database and user.
 # Init airflow. After init, you can adjust airflow settings in airflow.cfg
 cd ~/airflow
 airflow db init
-<img width="710" alt="image" src="https://user-images.githubusercontent.com/26862785/205655803-d170285a-cff0-41be-ac86-976db22778c5.png">
 
 # The Standalone command will initialise the database, make a user,
 # and start all components for you.
