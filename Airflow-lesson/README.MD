@@ -80,6 +80,9 @@ airflow scheduler -D
 ```
 *** To find your DAG object list you can run __airflow dags list__ and confirm that your DAG shows up in the list.
 
+Alternative Installation Instraction can also be found at:
+https://my330space.wordpress.com/2019/12/20/how-to-install-apache-airflow-on-mac/
+
 #### How to Remove Airflow Example DAGs
 
 You could delete the DAGs one by one, but there's a better approach. Open the ``` ~/airflow/airflow.cfg ``` file and change the load_examples value to False:
